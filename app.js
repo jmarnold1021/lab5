@@ -10,6 +10,7 @@ var handlebars = require('express3-handlebars')
 
 var index = require('./routes/index');
 var add = require('./routes/add');
+var pg = require('pg');
 // Example route
 // var user = require('./routes/user');
 
@@ -43,4 +44,15 @@ app.get('/add',add.addFriend);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
+});
+
+
+
+
+pg.connect(process.env.DATABASE_URL, function(err, client) {
+  var query = client.query('SELECT * FROM test_tab');
+
+  query.on('row', function(row) {
+    console.log(JSON.stringify(row));
+  });
 });
