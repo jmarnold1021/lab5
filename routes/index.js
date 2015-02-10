@@ -7,9 +7,10 @@ var cars={'cars':[]};
 pg.connect(process.env.DATABASE_URL, function(err, client) {
   var query = client.query('SELECT * FROM test_tab');
 
-  query.on('end', function(row) {
+  query.on('row', function(row,result) {
     console.log(JSON.stringify(row));
-		cars['cars'].push(row);
+		result.addRow(row);
+		cars['cars']=result;
   });
 });
 
