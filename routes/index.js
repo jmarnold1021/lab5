@@ -9,12 +9,17 @@ pg.connect(process.env.DATABASE_URL, function(err, client) {
 
   query.on('row', function(row,result) {
     console.log(JSON.stringify(row));
-		result.addRow(row);
-		cars['cars']=result;
+		cars['cars'].push(row);
   });
+	query.on('end',function(result){
+     console.log(cars);        
+	});					 
+	  
 });
 
 exports.view = function(req, res){
+
+
 	console.log(cars);
 	
 	res.render('index',cars);
