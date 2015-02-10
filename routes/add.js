@@ -1,5 +1,5 @@
-var data = require("../data.json");
-//var pg = require('pg');
+//var data = require("../data.json");
+var pg = require('pg');
 
 var cars={'cars':[]};
 pg.connect(process.env.DATABASE_URL, function(err, client) {
