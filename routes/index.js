@@ -15,6 +15,7 @@ exports.view = function(req, res){
 		  cars['cars'].push(row);
     });
 	  query.on('end',function(result){
+	    console.log(cars);
 		  client.end();
 
 	  });					 
@@ -22,7 +23,6 @@ exports.view = function(req, res){
 
 
 
-	console.log(cars);
 	
 	res.render('index',cars);
 };
