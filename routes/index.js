@@ -2,11 +2,11 @@
 //var data = require('../data.json');
 var pg = require('pg');
 
-var cars={'cars':[]};
 
 exports.view = function(req, res){
 
-
+  var cars={'cars':[]};
+  
   pg.connect(process.env.DATABASE_URL, function(err, client) {
     var query = client.query('SELECT * FROM test_tab');
 
