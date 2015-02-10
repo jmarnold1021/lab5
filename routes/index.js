@@ -12,7 +12,9 @@ pg.connect(process.env.DATABASE_URL, function(err, client) {
 		cars['cars'].push(row);
   });
 	query.on('end',function(result){
-     console.log(cars);        
+     console.log(cars);  
+		 client.end();
+
 	});					 
 	  
 });
