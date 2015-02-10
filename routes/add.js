@@ -1,5 +1,5 @@
 var data = require("../data.json");
-var pg = require('pg');
+//var pg = require('pg');
 
 var cars={'cars':[]};
 pg.connect(process.env.DATABASE_URL, function(err, client) {
@@ -14,6 +14,6 @@ pg.connect(process.env.DATABASE_URL, function(err, client) {
 
 exports.addFriend = function(req, res) {    
 	// Your code goes here
-	data["friends"].push({name:req.query.name,description:req.query.description,imageUrl:"http://lorempixel.com/400/400/people"});
-	res.render('add',data,cars);
+	//data["friends"].push({name:req.query.name,description:req.query.description,imageUrl:"http://lorempixel.com/400/400/people"});
+	res.render('add',cars);
  }
